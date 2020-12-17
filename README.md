@@ -1,7 +1,7 @@
 # busco-quality
 
-metashot/busco-quality is a pipeline for assessing the quality of and eukaryotic
-genomes using BUSCO.
+metashot/busco-quality is a pipeline for assessing the quality of prokaryotic
+and eukaryotic genomes using BUSCO.
 
 *Note*: This workflow is not intended for classify "finished" genomes.
 The "finished" category is reserved for genomes that can be assembled with
