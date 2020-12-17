@@ -1,6 +1,6 @@
-# busco-quality
+# busco
 
-metashot/busco-quality is a pipeline for assessing the quality of prokaryotic
+metashot/busco is a pipeline for assessing the quality of prokaryotic
 and eukaryotic genomes using BUSCO.
 
 *Note*: This workflow is not intended for classify "finished" genomes.
@@ -20,7 +20,7 @@ extensive manual review and editing.
 1. Start running the analysis:
    
   ```bash
-  nextflow run metashot/busco-quality \
+  nextflow run metashot/busco \
     --sequences '*.fa' \
     --outdir results
   ```
