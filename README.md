@@ -21,7 +21,7 @@ extensive manual review and editing.
    
   ```bash
   nextflow run metashot/busco-quality \
-    --genomes '*.fa' \
+    --sequences '*.fa' \
     --outdir results
   ```
 ## Parameters
