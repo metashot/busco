@@ -50,7 +50,7 @@ process busco {
         ${param_auto_lineage} \
         ${param_offline} \
         --cpu ${task.cpus}
-    set -e
+
 
     AUGUSTUS_ERR_STR="SystemExit: Augustus did not recognize any genes"
     PLACEMENTS_ERR_STR="SystemExit: Placements failed"
