@@ -8,7 +8,7 @@ process busco {
     input:
     tuple val(id), path(sequences)
     path (lineage)
-    path (busco_db)
+    path busco_db, stageAs: 'busco_downloads'
 
     output:
     path "${id}"
@@ -33,11 +33,9 @@ process busco {
 
     if( params.busco_db == 'none' ) {
         param_offline = ''
-        param_download_path = ''
     }
     else {
         param_offline = '--offline'
-        param_download_path = "--download_path ${params.busco_db}"
     }
 
     """

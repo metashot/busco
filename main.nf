@@ -11,7 +11,7 @@ workflow {
         .map { file -> tuple(file.baseName, file) }
 
     lineage = file(params.lineage, type: 'file')
-    busco_db = file(params.busco_db, type: 'file')
+    busco_db = file(params.busco_db, type: 'dir')
 
     busco(sequences_ch, lineage, busco_db)
 }
