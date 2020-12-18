@@ -46,7 +46,6 @@ process busco {
         ${param_lineage_dataset} \
         ${param_auto_lineage} \
         ${param_offline} \
-        ${param_download_path} \
         --cpu ${task.cpus}
     """
 }
