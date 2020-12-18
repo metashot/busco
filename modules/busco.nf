@@ -42,7 +42,6 @@ process busco {
     set +e
     BUSCO_EXIT=0
     trap 'BUSCO_EXIT=$?' ERR
-
     busco \
         -i ${sequences} \
         -o ${id} \
@@ -51,10 +50,10 @@ process busco {
         ${param_auto_lineage} \
         ${param_offline} \
         --cpu ${task.cpus}
+    set -e
 
     AUGUSTUS_ERR_STR="SystemExit: Augustus did not recognize any genes"
     PLACEMENTS_ERR_STR="SystemExit: Placements failed"
-    
     BUSCO_LOG=${id}/logs/busco.log
     if [ "\$BUSCO_EXIT" -eq 1 ] && [ -f \$BUSCO_LOG ]; then
         grep -Fq "\${AUGUSTUS_ERR_STR}" \$BUSCO_LOG
