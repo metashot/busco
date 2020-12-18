@@ -41,7 +41,7 @@ process busco {
     """
     set +e
     BUSCO_EXIT=0
-    trap 'BUSCO_EXIT=$?' ERR
+    trap 'BUSCO_EXIT=\$?' ERR
     busco \
         -i ${sequences} \
         -o ${id} \
@@ -57,9 +57,9 @@ process busco {
     BUSCO_LOG=${id}/logs/busco.log
     if [ "\$BUSCO_EXIT" -eq 1 ] && [ -f \$BUSCO_LOG ]; then
         grep -Fq "\${AUGUSTUS_ERR_STR}" \$BUSCO_LOG
-        AUGUSTUS_ERR=$?
+        AUGUSTUS_ERR=\$?
         grep -Fq "\${PLACEMENTS_ERR_STR}" \$BUSCO_LOG
-        PLACEMENTS_ERR=$?
+        PLACEMENTS_ERR=\$?
         if [ "\$AUGUSTUS_ERR" -eq 0 ] || [ "\$PLACEMENTS_ERR" -eq 0 ]; then
             exit 0
         else
