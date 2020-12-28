@@ -15,10 +15,12 @@ workflow {
     lineage = file(params.lineage, type: 'file')
     busco_db = file(params.busco_db, type: 'dir')
 
+    genomes_only_ch = genomes_ch
+        .map { row -> row[1] }
+
     busco(genomes_ch, lineage, busco_db)
-    statswrapper(genomes_ch.collect())
+    statswrapper(genomes_only_ch.collect())
     genome_info(busco.out.summary.collect(), statswrapper.out.stats)
-    genome_filter(genome_info.out.table,
-                  genomes_ch.map { row -> row[1] }.collect())
+    genome_filter(genome_info.out.table, genomes_only_ch.collect())
 
 }
