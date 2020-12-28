@@ -40,11 +40,6 @@ process busco {
     }
 
     """
-    BUSCO_LOG=${id}/logs/busco.log
-    
-    NO_ERR_S1='SystemExit: Augustus did not recognize any genes'
-    NO_ERR_S2='SystemExit: Placements failed'
-
     set +e
     busco \
         -i ${genome} \
@@ -56,11 +51,23 @@ process busco {
         --cpu ${task.cpus}
     BUSCO_EXIT=\$?
       
-    if [ "\$BUSCO_EXIT" -eq 1 ] && [ -f \$BUSCO_LOG ]; then    
-        grep -q "\${NO_ERR_S1}\|\${NO_ERR_S2}" \$BUSCO_LOG
+    BUSCO_LOG=${id}/logs/busco.log
+    if [ "\$BUSCO_EXIT" -eq 1 ] && [ -f \$BUSCO_LOG ]; then
+        
+        EXIT_MSG='SystemExit: Augustus did not recognize any genes'
+        grep -q "\$EXIT_MSG" \$BUSCO_LOG
         if [ "\$?" -eq 0 ]; then
+            echo "Augustus did not recognize any genes." >> ${id}/exit_info.txt
             exit 0
         fi
+
+        EXIT_MSG='SystemExit: Placements failed'
+        grep -q "\$EXIT_MSG" \$BUSCO_LOG
+        if [ "\$?" -eq 0 ]; then
+            echo "Placements failed." >> ${id}/exit_info.txt
+            exit 0
+        fi
+
     fi
 
     exit \$BUSCO_EXIT
