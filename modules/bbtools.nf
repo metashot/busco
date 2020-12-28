@@ -13,6 +13,8 @@ process statswrapper {
 
         script:       
         """
-        statswrapper.sh *.fa > stats.tsv
+        mkdir genomes_dir
+        mv ${genomes} genomes_dir
+        statswrapper.sh genomes_dir/* > stats.tsv
         """
 }
