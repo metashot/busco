@@ -6,12 +6,13 @@ process busco {
     publishDir "${params.outdir}/busco" , mode: 'copy'
 
     input:
-    tuple val(id), path(sequences)
+    tuple val(id), path(genome)
     path (lineage)
     path busco_db, stageAs: 'busco_downloads'
 
     output:
     path "${id}"
+    path "${id}/short_summary.specific.*.${id}.txt", optional: true, emit: summary_specific
 
     script:
     if( params.lineage == 'auto' ) {
@@ -39,34 +40,29 @@ process busco {
     }
 
     """
+    BUSCO_LOG=${id}/logs/busco.log
+    
+    NO_ERR_S1='SystemExit: Augustus did not recognize any genes'
+    NO_ERR_S2='SystemExit: Placements failed'
+
     set +e
-    BUSCO_EXIT=0
-    trap 'BUSCO_EXIT=\$?' ERR
     busco \
-        -i ${sequences} \
+        -i ${genome} \
         -o ${id} \
-        -m ${params.mode} \
+        -m genome \
         ${param_lineage_dataset} \
         ${param_auto_lineage} \
         ${param_offline} \
         --cpu ${task.cpus}
-
-
-    AUGUSTUS_ERR_STR="SystemExit: Augustus did not recognize any genes"
-    PLACEMENTS_ERR_STR="SystemExit: Placements failed"
-    BUSCO_LOG=${id}/logs/busco.log
-    if [ "\$BUSCO_EXIT" -eq 1 ] && [ -f \$BUSCO_LOG ]; then
-        grep -Fq "\${AUGUSTUS_ERR_STR}" \$BUSCO_LOG
-        AUGUSTUS_ERR=\$?
-        grep -Fq "\${PLACEMENTS_ERR_STR}" \$BUSCO_LOG
-        PLACEMENTS_ERR=\$?
-        if [ "\$AUGUSTUS_ERR" -eq 0 ] || [ "\$PLACEMENTS_ERR" -eq 0 ]; then
+    BUSCO_EXIT=\$?
+      
+    if [ "\$BUSCO_EXIT" -eq 1 ] && [ -f \$BUSCO_LOG ]; then    
+        grep -q "\$NO_ERR_S1\|\$NO_ERR_S2" \$BUSCO_LOG
+        if [ "\$?" -eq 0 ]; then
             exit 0
-        else
-            exit 1
         fi
-    else
-        exit \$BUSCO_EXIT  
     fi
+
+    exit \$BUSCO_EXIT
     """
 }
