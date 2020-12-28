@@ -57,7 +57,7 @@ process busco {
     BUSCO_EXIT=\$?
       
     if [ "\$BUSCO_EXIT" -eq 1 ] && [ -f \$BUSCO_LOG ]; then    
-        grep -q "\$NO_ERR_S1\|\$NO_ERR_S2" \$BUSCO_LOG
+        grep -q "\${NO_ERR_S1}|\${NO_ERR_S2}" \$BUSCO_LOG
         if [ "\$?" -eq 0 ]; then
             exit 0
         fi
