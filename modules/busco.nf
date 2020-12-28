@@ -12,7 +12,7 @@ process busco {
 
     output:
     path "${id}"
-    path "${id}/short_summary.specific.*.${id}.txt", optional: true, emit: summary_specific
+    path "${id}/short_summary.specific.*.${id}.txt", optional: true, emit: summary
 
     script:
     if( params.lineage == 'auto' ) {
