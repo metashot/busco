@@ -3,6 +3,8 @@
 nextflow.enable.dsl=2
 
 include { busco } from './modules/busco'
+include { statswrapper } from './modules/bbtools'
+include { genome_info; genome_filter } from './modules/utils'
 
 workflow {
 
