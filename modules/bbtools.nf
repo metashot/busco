@@ -9,7 +9,7 @@ process statswrapper {
         path(genomes)
 
         output:
-        path("stats.tsv"), emit: stats
+        path 'stats.tsv', emit: stats
 
         script:       
         """
