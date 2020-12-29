@@ -62,7 +62,7 @@ directory after the pipeline has finished.
 
 ### Secondary outputs
 - `busco`: contains the BUSCO short summaries and logs for each input genome;
-- `statswrapper`: contains the original statistics file created byy the
+- `statswrapper`: contains the original statistics file created by the
   BBTools `statswrapper.sh` command.
 
 ## Documetation

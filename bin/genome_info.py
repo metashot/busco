@@ -116,7 +116,7 @@ genome_info = genome_info[[
 ]]
 
 genome_info[["Completeness", "Contamination"]] = \
-    genome_info[["Completeness", "Contamination"]].fill_na(0.0)
+    genome_info[["Completeness", "Contamination"]].fillna(0.0)
 genome_info.fillna("NA", inplace=True)
 
 genome_info.to_csv(GENOME_INFO, sep='\t', index=False, float_format='%.2f')
