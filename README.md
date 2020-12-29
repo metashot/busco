@@ -37,8 +37,7 @@ Parameters definitions are located in [`nextflow.config`](nextflow.config).
 | `busco_db` | `none` | BUSCO download folder for offline mode (see https://busco.ezlab.org/busco_userguide.html#offline) |
 | `lineage` | `auto` | lineage. It can be `auto`, `auto-prok`, `auto-euk`, a dataset name (e.g `bacteria` or `bacteria_odb10`) or a path (e.g. `/home/user/bacteria_odb10`) |
 | `min_completeness` | 50 | discard sequences with less than 50% completeness |
-| `max_contamination` | `"data/*.fa"` | discard sequences with more than 10%
-  contamination |
+| `max_contamination` | `"data/*.fa"` | discard sequences with more than 10% contamination |
 
 ### Resource limits
 
