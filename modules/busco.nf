@@ -34,13 +34,18 @@ process busco {
 
     if( params.busco_db == 'none' ) {
         param_offline = ''
-        busco_db.delete() // avoid "File exists" error
+        
     }
     else {
         param_offline = '--offline'
     }
 
     """
+    # Avoid the "FileExistsError" in inline mode
+    if [ "${param_offline}" = "" ]; then
+        rm busco_downloads
+    fi
+
     set +e
     busco \
         -i ${genome} \
