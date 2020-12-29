@@ -43,9 +43,9 @@ Parameters definitions are located in [`nextflow.config`](nextflow.config).
 
 | Parameter | Default | Description |
 | --------- | ------- | ----------- |
-| `max_cpus` | 8 | maximum number of CPUs for each process |
-| `max_memory` | 32.GB | maximum memory for each process |
-| `max_time` | 48.h | maximum time for each process |
+| `max_cpus` | `8` | maximum number of CPUs for each process |
+| `max_memory` | `32.GB` | maximum memory for each process |
+| `max_time` | `24.h` | maximum time for each process |
 
 See also [System
 requirements](https://metashot.github.io/#system-requirements).
