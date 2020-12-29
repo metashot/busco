@@ -28,7 +28,14 @@ extensive manual review and editing.
   ```
 ## Parameters
 
-* `genomes` (default `"data/*.fa"`) - input genomes in FASTA format
+| Parameter | Default | Description |
+| --------- | ------- | ----------- |
+| `genomes` | `"data/*.fa"` | input genomes in FASTA format |
+| `outdir` | `results` | output directory |
+| `busco_db` | `none` | BUSCO download folder for offline mode (see https://busco.ezlab.org/busco_userguide.html#offline) |
+
+* `genomes` (default `"data/*.fa"`)
+  input genomes in FASTA format
 * `outdir` (default `results`) - output directory
 * `busco_db` (default `none`) - BUSCO download folder for offline mode (see
   https://busco.ezlab.org/busco_userguide.html#offline).
