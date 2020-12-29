@@ -11,7 +11,8 @@ process busco {
     path busco_db, stageAs: 'busco_downloads'
 
     output:
-    path "${id}/*"
+    path "${id}/logs"
+    path "${id}/short_summary.*"
     path "${id}/short_summary.specific.*.${id}.txt", optional: true, emit: summary
 
     script:
