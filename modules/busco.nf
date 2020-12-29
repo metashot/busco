@@ -12,7 +12,7 @@ process busco {
 
     output:
     path "${id}/logs"
-    path "${id}/short_summary.*"
+    path "${id}/short_summary.*", optional: true
     path "${id}/short_summary.specific.*.${id}.txt", optional: true, emit: summary
 
     script:
