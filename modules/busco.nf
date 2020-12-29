@@ -34,7 +34,6 @@ process busco {
 
     if( params.busco_db == 'none' ) {
         param_offline = ''
-        
     }
     else {
         param_offline = '--offline'
