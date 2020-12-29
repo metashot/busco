@@ -34,6 +34,7 @@ process busco {
 
     if( params.busco_db == 'none' ) {
         param_offline = ''
+        busco_db.delete() // avoid "File exists" error
     }
     else {
         param_offline = '--offline'
