@@ -12,8 +12,10 @@ process busco {
 
     output:
     path "${id}/logs"
+    path "${id}/exit_info.txt", optional: true
     path "${id}/short_summary.*", optional: true
     path "${id}/short_summary.specific.*.${id}.txt", optional: true, emit: summary
+    
 
     script:
     if( params.lineage == 'auto' ) {

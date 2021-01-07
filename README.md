@@ -28,7 +28,7 @@ extensive manual review and editing.
   ```
 ## Parameters
 
-Parameters definitions are located in [`nextflow.config`](nextflow.config).
+Parameters are decladed in [`nextflow.config`](nextflow.config).
 
 | Parameter | Default | Description |
 | --------- | ------- | ----------- |
