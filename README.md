@@ -56,7 +56,7 @@ directory after the pipeline has finished.
 
 ### Main outputs
 - `genome_info.tsv`: summary of genomes quality (including completeness,
-  contamination, N50, ...) in tab-separated format.
+  contamination, N50, BUSCO counts...) in tab-separated format.
 - `filtered`: genomes filtered by the `--min_completeness` and
   `--max_contamination` options; 
 
