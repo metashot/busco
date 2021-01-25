@@ -22,5 +22,4 @@ workflow {
     statswrapper(genomes_only_ch.collect())
     genome_info(busco.out.summary.collect(), statswrapper.out.stats)
     genome_filter(genome_info.out.table, genomes_only_ch.collect())
-
 }
