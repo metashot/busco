@@ -1,5 +1,9 @@
 # busco
 
+**Deprecated**. Use [aweMAGs](https://github.com/metashot/awemags) instead.
+
+---
+
 metashot/busco is a pipeline for assessing the quality of prokaryotic
 and eukaryotic genomes using BUSCO.
 
